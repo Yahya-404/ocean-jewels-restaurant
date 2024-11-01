@@ -1,0 +1,140 @@
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~Google Fonts~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~Tailwind~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~@Layer base~~~~~~~~~~~~~~~~~~~~~~~~~ */
+:root {
+  --background: #f3f3f5;
+  --back: red;
+  --primary-100: #0d0d25;
+  --primary-200: #212529;
+  --accent: #ff8243;
+  --primary: #00c6ff;
+  --dark: #0f172a;
+  --light: #f8f9fa;
+}
+@layer base {
+  * {
+    @apply m-0 p-0 outline-none border-none box-border;
+  }
+  body {
+    text-rendering: optimizeLegibility !important;
+    -webkit-tap-highlight-color: transparent;
+    @apply bg-["#f3f3f5"] font-main;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  ::selection {
+    @apply bg-accent text-primary-100;
+  }
+  /* ~~~~~~~~~~~Scrollbar UI~~~~~~~~~~~ */
+  /* WebKit (Safari/Chrome) */
+  ::-webkit-scrollbar {
+    @apply w-1.5;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-[#bfbfbf];
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent rounded-xl hover:bg-[#f16620];
+  }
+  /* Firefox */
+  /* لا تدعم Firefox تغيير لون شريط التمرير باستخدام CSS فقط حاليًا */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-custom font-black text-primary-100;
+  }
+  p {
+    @apply leading-7;
+  }
+  input {
+    @apply bg-transparent;
+  }
+  img {
+    @apply select-none pointer-events-none;
+  }
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~@Layer component~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@layer components {
+  .container {
+    @apply w-11/12 max-w-7xl mx-auto;
+  }
+  .pos-fixed {
+    @apply fixed top-0 left-0 w-full;
+  }
+  .pos-absolute {
+    @apply absolute top-0 left-0 w-full;
+  }
+  .cubic-bezier {
+    transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  .cubic-bezier-2 {
+    transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+  }
+  .transition-300 {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .transition-500 {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  /* Flex Box */
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+  .flex-start {
+    @apply flex justify-center items-start;
+  }
+  .all-sections {
+    @apply relative py-24;
+  }
+  .primary-btn {
+    @apply relative bg-[#f3f3f5] text-primary-100 capitalize min-w-28 min-h-12 py-1 px-7 inline-flex justify-center items-center rounded-3xl cursor-pointer cubic-bezier-2 shadow-primary-btn hover:shadow-inset-primary-btn;
+  }
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~@Layer utilities~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@layer utilities {
+  /* Navbar */
+  #navbar-btn a,
+  #navbar-btn button {
+    @apply relative text-accent shadow-inset-navbar-btn cursor-pointer;
+  }
+  #navbar-btn a:hover {
+    @apply bg-navbar-btn shadow-navbar-btn;
+  }
+  /* Gallery-Swiper */
+  .swiper-button-wp {
+    @apply relative -bottom-20 mx-32 max-lg:hidden !important;
+  }
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    @apply hidden;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    @apply w-16 h-16 bg-[#ffffff] shadow-swiper-btn rounded-full transition-all duration-300 ease-linear hover:shadow-inset-swiper-btn !important;
+  }
+  .swiper-button-wp .arrows {
+    @apply inline-block w-6 h-6 text-[#fcbc30] !important;
+  }
+  .swiper-pagination {
+    @apply absolute bottom-40 sm:bottom-24 left-1/2 -translate-x-1/2 bg-swiper-pagination shadow-swiper-pagination max-w-fit py-[10px] px-[20px] rounded-full !important;
+  }
+  .swiper-pagination-bullet {
+    transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+    @apply w-[10px] h-[10px] mx-[10px] !important;
+  }
+  .swiper-pagination-bullet-active {
+    @apply bg-[#fcbc30] w-6 rounded-lg !important;
+  }
+}
